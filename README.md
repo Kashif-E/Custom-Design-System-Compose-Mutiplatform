@@ -5,7 +5,6 @@ ComposeApp is a Kotlin-based project that leverages Jetpack Compose for building
 ## Table of Contents
 
 - [Getting Started](#getting-started)
-- [Project Structure](#project-structure)
 - [Theme Customization](#theme-customization)
   - [Colors](#colors)
   - [Typography](#typography)
@@ -14,25 +13,8 @@ ComposeApp is a Kotlin-based project that leverages Jetpack Compose for building
 
 ## Getting Started
 
-## Project Structure
+To get started with this project, follow the instructions below.
 
-```kotlin
-composeApp/
-├── src/
-│   ├── commonMain/
-│   │   └── kotlin/
-│   │       └── com/
-│   │           └── kashif/
-│   │               └── designsystem/
-│   │                   ├── App.kt
-│   │                   └── theme/
-│   │                       ├── colors/
-│   │                       ├── typography/
-│   │                       └── spacing/
-├── build.gradle.kts
-├── settings.gradle.kts
-└── README.md
-```
 ### Prerequisites
 
 - [Android Studio](https://developer.android.com/studio) or [IntelliJ IDEA](https://www.jetbrains.com/idea/)
@@ -55,18 +37,47 @@ composeApp/
 The color palette is defined in `colors/Colors.kt`:
 
 ```kotlin
-val Purple200 = Color(0xFFBB86FC)
-val Purple500 = Color(0xFF6200EE)
-val Purple700 = Color(0xFF3700B3)
-val Teal200 = Color(0xFF03DAC5)
-
-val LightPrimary = Purple500
-val LightPrimaryVariant = Purple700
-val LightSecondary = Teal200
-
-val DarkPrimary = Purple200
-val DarkPrimaryVariant = Purple700
-val DarkSecondary = Teal200
+@Immutable
+data class ExtendedColors(
+    val primaryVariantLight: Color,
+    val primaryVariantLightBG: Color,
+    val errorLight: Color,
+    val primaryLight: Color,
+    val primaryLightBG: Color,
+    val lightGreenBG1: Color,
+    val primaryLightBG2: Color,
+    val neutralBlue: Color,
+    val neutralWhite: Color,
+    val colorWhiteTransparent: Color,
+    val greyLight: Color,
+    val grey: Color,
+    val greyMid: Color,
+    val fieldPlaceHolderText: Color,
+    val greyDark: Color,
+    val greyBg: Color,
+    val greyDarkText: Color,
+    val warning: Color,
+    val warningLight: Color,
+    val primaryDark: Color,
+    val youtube: Color,
+    val secondarySurface: Color,
+    val productViewBG: Color,
+    val primary: Color,
+    val  primaryVariant : Color,
+    val secondary : Color,
+    val secondaryVariant : Color,
+    val background : Color,
+    val backgroundTwo : Color,
+    val surface : Color,
+    val onPrimary : Color,
+    val onSecondary : Color,
+    val onBackground : Color,
+    val onSurface : Color,
+    val error : Color,
+    val onError : Color,
+    val toastBackground : Color,
+    val toastText : Color
+)
 ```
 
 ### Typography
@@ -110,19 +121,26 @@ data class ExtendedSpacing (
 
 ## Usage
 
-To use the custom theme in your Compose UI, you can use the `MaterialTheme` composable:
+To use the custom theme in your Compose UI, you can use the `MaterialTheme` composable with `CompositionLocalProvider` to provide the custom theme values.:
 
 ```kotlin
-MaterialTheme(
-    colors = lightColors(
-        primary = LightPrimary,
-        primaryVariant = LightPrimaryVariant,
-        secondary = LightSecondary
-    ),
-    typography = AppTypography,
-    shapes = Shapes,
-    content = content
-)
+ // CompositionLocalProvider is used to provide custom theme values to the Compose hierarchy.
+CompositionLocalProvider(
+    // Provide the extended colors based on the darkTheme parameter.
+    LocalAppColors provides lightExtendedColors,
+    // Provide the custom shapes defined by appShapes.
+    LocalAppShapes provides appShapes,
+    // Provide the custom spacing values.
+    LocalAppSpacing provides ExtendedSpacing(),
+
+    ) {
+    // Apply the MaterialTheme with the custom typography and the content provided in the composable.
+    MaterialTheme(
+        typography = Type.typography,
+        content = content,
+        colors = getColorPallete(darkTheme)
+    )
+}
 ```
 
 Example usage in a composable function:
