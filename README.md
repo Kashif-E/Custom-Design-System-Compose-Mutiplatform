@@ -1,4 +1,4 @@
-# ComposeApp
+# Custom Design system Jetpack/Multiplatform Compose
 
 ComposeApp is a Kotlin-based project that leverages Jetpack/Multiplatform Compose for building modern, native UI. This project includes a custom Material theme with extended color palettes, typography, and spacing.
 
