@@ -42,9 +42,9 @@ composeApp/
 ### Installation
 
 1. Clone the repository:
-    ```sh
+ 
     git clone [https://github.com/Kashif-E/Custom-Design-System-Compose-Mutiplatform](https://github.com/Kashif-E/Custom-Design-System-Compose-Mutiplatform.git)
-    ```
+  
 2. Open the project in Android Studio or IntelliJ IDEA.
 3. Sync the project with Gradle files.
 
