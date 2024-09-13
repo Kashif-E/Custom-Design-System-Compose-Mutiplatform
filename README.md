@@ -16,6 +16,7 @@ ComposeApp is a Kotlin-based project that leverages Jetpack Compose for building
 
 ## Project Structure
 
+```kotlin
 composeApp/
 ├── src/
 │   ├── commonMain/
@@ -31,7 +32,7 @@ composeApp/
 ├── build.gradle.kts
 ├── settings.gradle.kts
 └── README.md
-
+```
 ### Prerequisites
 
 - [Android Studio](https://developer.android.com/studio) or [IntelliJ IDEA](https://www.jetbrains.com/idea/)
